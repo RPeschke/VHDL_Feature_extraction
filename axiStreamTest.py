@@ -38,13 +38,13 @@ class AxisInt(AxisStreamBase):
 
 
 
-def reset_if(MAX_Index, Line, tlast):
+def reset_if(MAX_Index, Line, AxOut):
     
     if Line > MAX_Index:
         Line.next=0
-        tlast.next = True
+        AxOut.tlast.next = True
     else:
-        tlast.next = False
+        AxOut.tlast.next = False
     
     
     
@@ -81,7 +81,7 @@ def AxiStimilus(AxOut,clk):
             AxOut.tvalid.next = False
             Line.next = Line +1
         
-        reset_if(20, Line,AxOut.tlast )
+        reset_if(20, Line,AxOut )
         #multi.next = multi -1
 
     return logic
